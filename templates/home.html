@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой сайт</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+ <div class="wrapper">
+
+     <header class="header">
+         <div class="header__link__wrapper">
+            <a class="header__link" href="/search">Поиск заказов</a>
+            <a class="header__link" href="/orders">Все заказы</a>
+             {% if user.is_authenticated %}
+                {{ user.username }}
+             {% else %}
+                <a class="header__login__link" href="{% url 'login' %}">Войти</a>
+             {% endif %}
+         </div>
+     </header>
+
+     <main class="main">
+ {% block content %}
+      <!-- default content text (typically empty) -->
+    {% endblock %}
+     </main>
+     <footer class="footer">
+         <div class="footer__start__line">
+             <span>Полезная информация</span>
+         </div>
+ <div class="footer__info_container">
+
+ </div>
+         <div class="footer__line"></div>
+         <div class="social__media">
+             <div class="social__media__icon_wrapper">
+             <a href="#"><img class="social__media__icon" src="{% static 'img/telegram_icon.png' %}" alt="Django"></a>
+              <a href="#"><img class="social__media__icon" src="{% static 'img/vk_icon.png' %}" alt="Django"></a>
+              <a href="#"><img class="social__media__icon" src="{% static 'img/discord_icon.png' %}" alt="Django"></a>
+             </div>
+             <!--<span>Copyright © 2023-2024</span>
+             <span>No rights reserved.</span>-->
+         </div>
+
+     </footer>
+ </div>
+</body>
+<script src="{% static 'js/script.js' %}"></script>
+</html>

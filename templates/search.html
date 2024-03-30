@@ -1,0 +1,39 @@
+
+{% extends "home.html" %}
+
+{% block content %}
+<title>Поиск заказов</title>
+<form action="{% url 'shop:search' %}" method="GET">
+    {% csrf_token %}
+    <input name="q" type="text" placeholder="Введите имя или фамилию...">
+</form>
+<h1>Список заказов для:</h1>
+<h2>{{ list_of_all_orders.0.customer }}</h2>
+<table>
+    <tr>
+        <th>Заказанный продукт</th>
+        <th>Дата заказа</th>
+    </tr>
+    {% for order in list_of_all_orders %}
+    <tr>
+        <td>{{ order.product }}</td>
+        <td>{{ order.order_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
